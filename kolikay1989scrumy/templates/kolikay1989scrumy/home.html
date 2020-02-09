@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  {% if user.is_authenticated  %}
+
+  <a href="{% url 'addgoal' %}">Click to add goal</a>
+
+<h2>Home Page Table</h2>
+<h3>Logged in as {{ request.user }} in {{ request.user.groups.all.0 }} Group </h3>
+
+<div>
+  <table border="">
+      <tr>
+          <th>User</th>
+          <th>Weekly Goals</th >
+          <th>Daily Goals</th>
+          <th>Verify Goals</th>
+          <th>Done Goals</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+          <td>{{user}}</td>
+          <td>{% for goal in weekly_goals%}
+                  {%if goal.user.username == user.username%}
+                  
+                  <a href="{% url 'movegoal' goal_id=goal.goal_id %}">{{goal}}</a>| {{goal.goal_id}}
+                  {%endif%}    
+              {%endfor%}
+          </td>
+          <td>{% for goal in daily_goals%}
+              {%if goal.user.username == user.username%}
+              <a href="{% url 'movegoal' goal_id=goal.goal_id %}">{{goal}}</a>| {{goal.goal_id}}
+              {%endif%}    
+          {%endfor%}
+      </td>
+      <td>{% for goal in verify_goals%}
+        {%if goal.user.username == user.username%}
+        <a href="{% url 'movegoal' goal_id=goal.goal_id %}">{{goal}}</a>| {{goal.goal_id}}
+        {%endif%}    
+    {%endfor%}
+</td>
+<td>{% for goal in done_goals%}
+  {%if goal.user.username == user.username%}
+  <a href="{% url 'movegoal' goal_id=goal.goal_id %}">{{goal}}</a>| {{goal.goal_id}}
+  {%endif%}    
+{%endfor%}
+</td>
+          
+      {% endfor %}
+      </tr>
+      
+  </table>
+</div>
+{% else %}
+<p>You are not allowed to view this page, <a href="{% url 'index' %}">Sign Up Here</a> or <a href="{% url 'login' %}">Login Here</a></p>
+     {% endif %}
+</body>
