@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='jeremiahchukwuscrumy',
+    name='kolikay1989scrumy',
     version='0.1',
     packages=find_packages(),
     include_package_data=True,
@@ -16,8 +16,8 @@ setup(
     description= 'A simple Django app to conduct Web-based task management.',
     long_description=README,
     url='https://www.example.com/',
-    author='Jeremiah Chukwuka',
-    author_email='jeremiahchukwu@gmail.com',
+    author='kolawole fabusuyi',
+    author_email='kolikay1989@gmail.com',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

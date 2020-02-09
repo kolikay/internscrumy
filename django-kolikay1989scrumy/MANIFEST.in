@@ -1,4 +1,4 @@
 include LICENSE.txt
 include README.rst
 recursive-include kolikay1989scrumy/static *
-recursive-include kolikay1989scrumy/template *
+recursive-include kolikay1989scrum/template *

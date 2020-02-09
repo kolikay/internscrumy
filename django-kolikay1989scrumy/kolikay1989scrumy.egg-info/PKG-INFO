@@ -1,37 +1,38 @@
 Metadata-Version: 1.1
-Name: jeremiahchukwuscrumy
+Name: kolikay1989scrumy
 Version: 0.1
 Summary: A simple Django app to conduct Web-based task management.
 Home-page: https://www.example.com/
-Author: Jeremiah Chukwuka
-Author-email: jeremiahchukwu@gmail.com
+Author: kolawole fabusuyi
+Author-email: kolikay1989@gmail.com
 License: BSD License
 Description: ===================
-        jeremiahchukwuscrumy
+        kolikay1989scrumy
         ===================
         
-        jeremiahchukwuscrumy is a simple Django app to assign goals. For each goal users can add it as a weelky goal or daily goal.
+        kolikay1989scrumy is a simple Django app to assign goals. For each goal users can add it as a weelky goal or daily goal.,
+        different users are grouped into differentgroup to perform diffrent functions.
         
         Detailed documentation is in the "docs" directory.
         
         Quick start
         ------------
         
-        1. Add "jeremiahchukwuscrumy" to your INSTALLED APPS setting like this::
+        1. Add "kolikay1989scrumy" to your INSTALLED APPS setting like this::
         
         
             INSTALLED_APPS =[
                 ...
-                'jeremiahchukwuscrumy',
+                'kolikay1989scrumy',
             ]
         
-        2. Include the  jeremiahchukwuscrumy URLconf in your project urls.py like this::
-            path('jeremiahchukwuscrumy', include('jeremiahchukwuscrumy.urls')),
+        2. Include the  kolikay1989scrumy URLconf in your project urls.py like this::
+            path('kolikay1989scrumy', include('kolikay1989scrumy.urls')),
         
-        3. Run `python manage.py migrate` to create the jeremiahchukwuscrumy models.
+        3. Run `python manage.py migrate` to create the kolikay1989scrumy models.
         4. Start the development server and visit http://127.0.0.1:8000/admin/ to create a jeremiahchukwuscrumy(you'll need the Admin app enabled).
         
-        5. Visit http://127.0.0.1:8000/jeremiahchukwuscrumy/ to see webpage.
+        5. Visit http://127.0.0.1:8000/kolikay1989scrumy/ to see webpage.
         6. Admin Login Credentials are(username = "louis", password="DJANGO_123")
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment
