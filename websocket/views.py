@@ -11,8 +11,8 @@ def test(request):
 
 
 def _parse_body(body):
-    body = body.decode('utf-8')
-    return json.loads(body)
+    body_unicode = body.decode('utf-8')
+    return json.loads(body_unicode)
 
 
 @csrf_exempt
