@@ -1,5 +1,5 @@
 import json
-from .models import ChatMessage, Connection
+from .models import ChatMessage, CreateConnection
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -21,7 +21,7 @@ def connect(request):
     print(body)
     connection_id = body['connectionId']
     print(connection_id)
-    id = Connection.objects.create(connection_id=connection_id)
+    id = CreateConnection.objects.create(connection_id=connection_id)
     id.save()
     # return response
     return JsonResponse({"message": "connected successfully"}, status=200, safe=False)
@@ -33,7 +33,7 @@ def disconnect(request):
     print(body)
     connection_id = body['connectionId']
     prunt(connection_id)
-    id = Connection.objects.get(connection_id=connection_id).delete()
+    id = CreateConnection.objects.get(connection_id=connection_id).delete()
     id.delete()
     return JsonResponse({"message": 'disconnected successfully'}, status=200, safe=False)
 
@@ -52,7 +52,7 @@ def send_message(request):
     body = _parse_body(request.body)
     print(body)
 
-    connections = Connection.objects.all()
+    connections = CreateConnection.objects.all()
     data = {'messages': [body]}
     for connection in connections:
         _send_to_connection(connection.connection_id, data)
