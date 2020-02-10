@@ -1,3 +1,7 @@
 from django.contrib import admin
+from websocket.models import ChatMessage, CreateConnection
 
-# Register your models here.
+
+admin.site.register(CreateConnection)
+admin.site.register(ChatMessage)
+
