@@ -11,13 +11,8 @@ def test(request):
 
 
 def _parse_body(body):
-    p = body.decode('utf-8')
-    with open(p, 'r') as f:
-        doc = json.load(f)
-        return doc
-
-
-
+    body_unicode = body.decode('utf-8')
+    return json.loads(body_unicode)
 
 
 @csrf_exempt
@@ -26,8 +21,8 @@ def connect(request):
     print(body)
     connection_id = body['connectionId']
     print(connection_id)
-    id = CreateConnection.objects.create(connection_id=connection_id)
-    id.save()
+    idd = CreateConnection.objects.create(connection_id=connection_id)
+    idd.save()
     # return response
     return JsonResponse({"message": "connected successfully"}, status=200, safe=False)
 
@@ -37,9 +32,9 @@ def disconnect(request):
     body = _parse_body(request.body)
     print(body)
     connection_id = body['connectionId']
-    prunt(connection_id)
-    id = CreateConnection.objects.get(connection_id=connection_id).delete()
-    id.delete()
+    print(connection_id)
+    idd = CreateConnection.objects.get(connection_id=connection_id).delete()
+    idd.delete()
     return JsonResponse({"message": 'disconnected successfully'}, status=200, safe=False)
 
 
@@ -55,8 +50,11 @@ def _send_to_connection(connection_id, data):
 @csrf_exempt
 def send_message(request):
     body = _parse_body(request.body)
-    print(body)
-
+    chat = ChatMessage()
+    chat.username = body['username']
+    chat.message = body['message']
+    chat.timestamp = body['timestamp']
+    chat.save()
     connections = CreateConnection.objects.all()
     data = {'messages': [body]}
     for connection in connections:
