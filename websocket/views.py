@@ -47,7 +47,7 @@ def _send_to_connection(connection_id, data):
 @csrf_exempt
 def send_message(request):
     body = _parse_body(request.body) 
-    chat_message = ChatMessage.objects.create(username=body['body']["username"], message=body['body']["message"], timestamp=body['body']["timestamp"])
+    chat_message = ChatMessage.objects.create(username=body['body']["username"], message=body['body']["content"], timestamp=body['body']["timestamp"])
     connections = [i.connection_id for i in Connection.objects.all()]
     body= {'username':chat_message.username, 'message':chat_message.message, 'timestamp':chat_message.timestamp}
     data = {'messages':[body]}
@@ -64,10 +64,10 @@ def get_recent_messages(request):
     connection_id = Connection.objects.get(connection_id=connectionId).connection_id
     messages = list(reversed(ChatMessage.objects.all()))
     if len(messages) > 5:
-        data = {'messages':[{'username':chat_message.username, 'message':chat_message.message,
+        data = {'messages':[{'username':chat_message.username, 'content':chat_message.message,
         'timestamp':chat_message.timestamp} for chat_message in messages[:5]]}
     else:
-        data = {'messages':[{'username':chat_message.username, 'message':chat_message.message,
+        data = {'messages':[{'username':chat_message.username, 'content':chat_message.message,
         'timestamp':chat_message.timestamp} for chat_message in messages]}
     _send_to_connection(connection_id, data )
     return JsonResponse('successfully sent', status=200, safe=False)
