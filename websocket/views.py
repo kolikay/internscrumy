@@ -33,11 +33,11 @@ def disconnect(request):
     return JsonResponse('disconnect successfully', status=200, safe=False)
 
 def _send_to_connection(connection_id, data):
-    gatewayapi = boto3.client('apigatewaymanagementapi', 
+    gatewayapi = boto3.client('apigatewaymanagementapi',
     endpoint_url= "https://19w5umpt3b.execute-api.us-east-2.amazonaws.com/test/",
     region_name='us-east-2',
-    aws_access_key_id='AKIAWYIPRZYYU5T4PIX3',
-    aws_secret_access_key= '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'
+    aws_access_key_id='',
+    aws_secret_access_key= ''
     )
     return gatewayapi.post_to_connection(ConnectionId=connection_id,Data=json.dumps(data).encode('utf-8'))
 
